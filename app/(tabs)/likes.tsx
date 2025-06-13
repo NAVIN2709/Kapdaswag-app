@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, FlatList, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
 
 const INCOMING_MATCHES = [
     {
@@ -22,42 +23,42 @@ const INCOMING_MATCHES = [
 ];
 
 const MATCHED_USERS = [
-  {
-    id: '4',
-    name: 'Liam',
-    bio: "Coffee lover and music enthusiast.",
-    image: "https://api.a0.dev/assets/image?text=Man with classic casual style&aspect=1:1&seed=21"
-  },
-  {
-    id: '5',
-    name: 'Emma',
-    bio: "Designer at heart. Dog mom.",
-    image: "https://api.a0.dev/assets/image?text=Woman with modern fashion style&aspect=1:1&seed=22"
-  },
-  {
-    id: '10',
-    name: 'Oliver',
-    bio: "Traveler. Bookworm. Introvert.",
-    image: "https://api.a0.dev/assets/image?text=Man with vintage style&aspect=1:1&seed=23"
-  },
-  {
-    id: '11',
-    name: 'Ava',
-    bio: "Yoga and matcha addict 🌱",
-    image: "https://api.a0.dev/assets/image?text=Woman with bohemian fashion&aspect=1:1&seed=24"
-  },
-  {
-    id: '12',
-    name: 'Noah',
-    bio: "Engineer. Meme lord. Cat person.",
-    image: "https://api.a0.dev/assets/image?text=Man with smart casual style&aspect=1:1&seed=25"
-  },
-  {
-    id: '14',
-    name: 'Isabella',
-    bio: "Love art, photography & deep talks.",
-    image: "https://api.a0.dev/assets/image?text=Woman with artsy look&aspect=1:1&seed=26"
-  }
+    {
+        id: '4',
+        name: 'Liam',
+        bio: "Coffee lover and music enthusiast.",
+        image: "https://api.a0.dev/assets/image?text=Man with classic casual style&aspect=1:1&seed=21"
+    },
+    {
+        id: '5',
+        name: 'Emma',
+        bio: "Designer at heart. Dog mom.",
+        image: "https://api.a0.dev/assets/image?text=Woman with modern fashion style&aspect=1:1&seed=22"
+    },
+    {
+        id: '10',
+        name: 'Oliver',
+        bio: "Traveler. Bookworm. Introvert.",
+        image: "https://api.a0.dev/assets/image?text=Man with vintage style&aspect=1:1&seed=23"
+    },
+    {
+        id: '11',
+        name: 'Ava',
+        bio: "Yoga and matcha addict 🌱",
+        image: "https://api.a0.dev/assets/image?text=Woman with bohemian fashion&aspect=1:1&seed=24"
+    },
+    {
+        id: '12',
+        name: 'Noah',
+        bio: "Engineer. Meme lord. Cat person.",
+        image: "https://api.a0.dev/assets/image?text=Man with smart casual style&aspect=1:1&seed=25"
+    },
+    {
+        id: '14',
+        name: 'Isabella',
+        bio: "Love art, photography & deep talks.",
+        image: "https://api.a0.dev/assets/image?text=Woman with artsy look&aspect=1:1&seed=26"
+    }
 ];
 
 
@@ -81,6 +82,7 @@ const SUGGESTIONS = [
 type TabType = 'incoming' | 'matched' | 'suggestions';
 
 const MatchesScreen = () => {
+    const router = useRouter();
     const navigation = useNavigation();
     const [activeTab, setActiveTab] = useState<TabType>('matched');
 
@@ -115,19 +117,35 @@ const MatchesScreen = () => {
         </View>
     );
 
-    const renderMatchedItem = ({ item }: any) => (
-        <View className="flex-row bg-white rounded-xl mb-4 p-4 shadow">
-            <Image source={{ uri: item.image }} className="w-20 h-20 rounded-full" />
-            <View className="flex-1 px-4 justify-center">
-                <Text className="text-lg font-bold text-gray-800">{item.name}</Text>
-                <Text className="text-gray-500">{item.bio}</Text>
-            </View>
-            <TouchableOpacity onPress={() => handleMessageUser(item.name)} className="bg-pink-600 px-3 py-2 rounded-lg self-center flex-row items-center">
-                <FontAwesome name="remove" size={18} color="#fff" />
-                <Text className="text-white ml-2 font-medium">Remove</Text>
+    const renderMatchedItem = ({ item }: any) => {
+        return (
+            <TouchableOpacity
+                onPress={() =>
+                    router.push({
+                        pathname: '/profile/[id]',
+                        params: { id: item.id },
+                    })
+                }
+                className="flex-row bg-white rounded-xl mb-4 p-4 shadow"
+            >
+                <Image source={{ uri: item.image }} className="w-20 h-20 rounded-full" />
+                <View className="flex-1 px-4 justify-center">
+                    <Text className="text-lg font-bold text-gray-800">{item.name}</Text>
+                    <Text className="text-gray-500">{item.bio}</Text>
+                </View>
+                <View className="justify-between items-center">
+                    <TouchableOpacity
+                        onPress={() => handleMessageUser(item.name)}
+                        className="bg-red-500 px-3 py-1 rounded-lg mb-2"
+                    >
+                        <Text className="text-white text-sm font-medium">Remove</Text>
+                    </TouchableOpacity>
+                    <FontAwesome name="chevron-right" size={18} color="#aaa" />
+                </View>
             </TouchableOpacity>
-        </View>
-    );
+        );
+    };
+
 
     const renderSuggestionItem = ({ item }: any) => (
         <View className="flex-row bg-white rounded-xl mb-4 p-4 shadow">
@@ -182,7 +200,7 @@ const MatchesScreen = () => {
             <View className="bg-white px-7 flex flex-row mb-3">
                 <TouchableOpacity
                     onPress={() => navigation.goBack()}
-                    className='mt-2 mr-6'
+                    className='mt-2 mr-3'
                 >
                     <FontAwesome name="arrow-left" size={20} color="#000" />
                 </TouchableOpacity>

@@ -4,8 +4,88 @@ import Swiper from 'react-native-deck-swiper';
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 const cards = [
-  { id: 1, brand: "Allen Solly", category: "Shirt", image_url: "https://f.media-amazon.com/images/I/61idJrfaIRL._AC_UL320_.jpg", link: "https://www.amazon.in/Allen-Solly-Geometric-Regular-ASSFWMOFO48848_White_38/dp/B07DMZQTNX/ref=cs_sr_dp_1?crid=21441F6H8C0VU&dib=eyJ2IjoiMSJ9.uuNCqLKCFVYJFS_tT0XBavWkml12lxN7elzhqmwL2P_PiZptCInsokey5Zp6uFLXRdXlspJNyQkqioeB508ptTvhiagc-yCPbxiEl5_thquUJnsEu-Bz9B4DTb-TzcEwcGiUsSTWPiena9ZOOXRmKJ_i5ptX2k9T7SvofZv_TN3lV1HJApfxDTyrKPe3ZsxH4MIdt90finzXne63aeF4lWWb7sykz8sEEZCshwqP2ygvd-ReIry7n-FSh2u0guu6XeaFun2HpzSBUZXQQhUvC-8Ym9_Zz9VcQU0vBcOw6kY.HCwk5wBsrk2zRpxeDMEw27VmaAZCuUideniC-CSeBpk&dib_tag=se&keywords=shirt&qid=1746275852&sprefix=s%2Caps%2C412&sr=8-18", name: "Men's Solid Slim Fit Shirt", price: "1599", tagline: "Men's Solid Slim Fit Shirt - Wear the vibe." },
+  {
+    id: 1,
+    brand: "Allen Solly",
+    category: "Shirt",
+    image_url: "https://f.media-amazon.com/images/I/61idJrfaIRL._AC_UL320_.jpg",
+    link: "https://www.amazon.in/dp/B07DMZQTNX",
+    name: "Men's Solid Slim Fit Shirt",
+    price: "1599",
+    tagline: "Men's Solid Slim Fit Shirt - Wear the vibe."
+  },
+  {
+    id: 2,
+    brand: "Levi's",
+    category: "Jeans",
+    image_url: "https://f.media-amazon.com/images/I/81WcnNQ-TBL._AC_UL320_.jpg",
+    link: "https://www.amazon.in/dp/B08B46C6G2",
+    name: "Levi's Slim Fit Mid-Rise Jeans",
+    price: "2299",
+    tagline: "Classic comfort meets timeless style."
+  },
+  {
+    id: 3,
+    brand: "H&M",
+    category: "T-Shirt",
+    image_url: "https://f.media-amazon.com/images/I/61MBlA8nKHL._AC_UL320_.jpg",
+    link: "https://www.amazon.in/dp/B098MN7L2G",
+    name: "H&M Men's Cotton T-Shirt",
+    price: "799",
+    tagline: "Minimalist tee for everyday swagger."
+  },
+  {
+    id: 4,
+    brand: "Puma",
+    category: "Jacket",
+    image_url: "https://f.media-amazon.com/images/I/51Nn1WRglCL._AC_UL320_.jpg",
+    link: "https://www.amazon.in/dp/B09MZ5L9P8",
+    name: "Puma Lightweight Windbreaker",
+    price: "3499",
+    tagline: "Stay breezy. Stay sporty."
+  },
+  {
+    id: 5,
+    brand: "Zara",
+    category: "Dress",
+    image_url: "https://f.media-amazon.com/images/I/713BQ4ylcOL._AC_UL320_.jpg",
+    link: "https://www.amazon.in/dp/B0B8GJP4KZ",
+    name: "Zara Women's Summer Dress",
+    price: "2799",
+    tagline: "Elegant curves, breezy comfort."
+  },
+  {
+    id: 6,
+    brand: "Nike",
+    category: "Joggers",
+    image_url: "https://f.media-amazon.com/images/I/51QJGFuO-JL._AC_UL320_.jpg",
+    link: "https://www.amazon.in/dp/B09FXVP6FR",
+    name: "Nike Sportswear Men's Joggers",
+    price: "1999",
+    tagline: "Train hard. Chill harder."
+  },
+  {
+    id: 7,
+    brand: "FabIndia",
+    category: "Kurta",
+    image_url: "https://f.media-amazon.com/images/I/71Y7N3ZpnFL._AC_UL320_.jpg",
+    link: "https://www.amazon.in/dp/B09TQNBNBX",
+    name: "Men's Cotton Printed Kurta",
+    price: "1499",
+    tagline: "Tradition, with a twist."
+  },
+  {
+    id: 8,
+    brand: "Biba",
+    category: "Ethnic Dress",
+    image_url: "https://f.media-amazon.com/images/I/61XcInLLO+L._AC_UL320_.jpg",
+    link: "https://www.amazon.in/dp/B07N6SBXVK",
+    name: "Biba Women's Flared Anarkali",
+    price: "3199",
+    tagline: "Grace and tradition stitched together."
+  }
 ];
+
 
 export default function Home() {
   return (

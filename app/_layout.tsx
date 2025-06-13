@@ -10,6 +10,14 @@ export default function RootLayout() {
       options={{
         headerShown: false,
       }} />
+      <Stack.Screen name="messages/[id]"
+      options={{
+        headerShown: false,
+      }} />
+      <Stack.Screen name="profile/[id]"
+      options={{
+        headerShown: false,
+      }} />
   </Stack>
   </>;
 }
