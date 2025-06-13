@@ -197,7 +197,7 @@ const MatchesScreen = () => {
                         className={`flex-1 py-4 items-center ${activeTab === tab ? 'border-b-2 border-pink-500' : ''
                             }`}
                     >
-                        <Text className={`${activeTab === tab ? 'text-pink-600 font-semibold' : 'text-gray-500'}`}>
+                        <Text className={`${activeTab === tab ? 'text-pink-600 font-semibold w-36 ml-12' : 'text-gray-500 w-36 ml-12'}`}>
                             {tab.charAt(0).toUpperCase() + tab.slice(1)}
                         </Text>
                         {tab === 'incoming' && INCOMING_MATCHES.length > 0 && (
